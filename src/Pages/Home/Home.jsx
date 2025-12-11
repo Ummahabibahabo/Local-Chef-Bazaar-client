@@ -1,9 +1,17 @@
 import React from "react";
+import Banner from "./Banner/Banner";
+import DailyMealsPage from "./DailyMealspage/DailyMealsPage";
+const latestDailyMealsPromise = fetch("http://localhost:3000/dailymeals").then(
+  (res) => res.json()
+);
 
 const Home = () => {
   return (
     <div>
-      <h1>This is home page</h1>
+      <Banner></Banner>
+      <DailyMealsPage
+        latestDailyMealsPromise={latestDailyMealsPromise}
+      ></DailyMealsPage>
     </div>
   );
 };
