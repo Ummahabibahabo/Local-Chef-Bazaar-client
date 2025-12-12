@@ -42,14 +42,6 @@ const Navbar = () => {
         </div>
 
         {/* LOGO */}
-
-        <Link
-          className="flex items-center gap-2 text-xl font-bold px-2 hover:bg-primary p-3 rounded-xl"
-          to="/"
-        >
-          <PiBowlSteamBold size={28} />
-          LocalFoodBazar
-        </Link>
       </div>
 
       {/* MIDDLE LINKS (LARGE SCREEN) */}

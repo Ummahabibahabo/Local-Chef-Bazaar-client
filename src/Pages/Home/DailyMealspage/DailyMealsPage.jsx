@@ -3,7 +3,7 @@ import DailyMealsCard from "./DailyMealsCard";
 
 const DailyMealsPage = ({ latestDailyMealsPromise }) => {
   const DailyMealsCards = use(latestDailyMealsPromise);
-  console.log(DailyMealsCards);
+  // console.log(DailyMealsCards);
   return (
     <div>
       <h1 className=" mb-5 text-4xl font-bold text-center">Daily Meals</h1>
