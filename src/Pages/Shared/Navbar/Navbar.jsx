@@ -7,7 +7,7 @@ const Navbar = () => {
   const links = (
     <>
       <CustomNavLink to="/">Home</CustomNavLink>
-      <CustomNavLink to="/meals">Meals</CustomNavLink>
+      <CustomNavLink to="/mealspage">Meals</CustomNavLink>
     </>
   );
 
