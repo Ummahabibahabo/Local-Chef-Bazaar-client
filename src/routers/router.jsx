@@ -7,6 +7,8 @@ import Login from "../Pages/Auth/login/Login";
 import Register from "../Pages/Auth/Register/Register";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import MealsPage from "../Pages/Meals/MealsPage";
+import PrivateRoute from "./PrivateRoute";
+import MealsDetailsPage from "../Pages/MealsDetailsPage/MealsDetailsPage";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +23,16 @@ export const router = createBrowserRouter([
       {
         path: "/mealspage",
         Component: MealsPage,
+      },
+      {
+        path: "/meals-details/:id",
+        element: (
+          <PrivateRoute>
+            <MealsDetailsPage></MealsDetailsPage>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/meals/${params.id}`),
       },
     ],
   },

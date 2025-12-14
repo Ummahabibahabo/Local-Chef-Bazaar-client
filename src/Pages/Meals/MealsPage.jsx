@@ -1,6 +1,7 @@
 // MealsPage.jsx
 import React, { useEffect, useState } from "react";
 import MealsCards from "./MealsCards";
+import { Link } from "react-router";
 
 const MealsPage = () => {
   const [meals, setMeals] = useState([]);
@@ -49,9 +50,12 @@ const MealsPage = () => {
         </button>
 
         {/* Centered Heading */}
-        <h1 className="text-4xl font-bold text-gray-800 text-center">
-          Daily Meals
-        </h1>
+        <Link to="/details">
+          {" "}
+          <h1 className="text-4xl font-bold text-gray-800 text-center">
+            Daily Meals
+          </h1>
+        </Link>
       </div>
 
       {/* Meals Grid */}

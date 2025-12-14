@@ -1,8 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import { useNavigate } from "react-router";
 
 const Login = () => {
   const {
@@ -12,12 +13,15 @@ const Login = () => {
   } = useForm();
 
   const { signInUser } = useAuth();
-
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log("in the login page", location);
   const handleLogin = (data) => {
     console.log("login data", data);
     signInUser(data.email, data.password)
       .then((result) => {
         console.log(result.user);
+        navigate(location?.state || "/");
       })
       .catch((error) => {
         console.log(error);
@@ -83,7 +87,11 @@ const Login = () => {
             </fieldset>
             <p className="text-center p-5 ">
               New to this website please{" "}
-              <Link className="text-blue-400 underline" to="/register">
+              <Link
+                state={location.state}
+                className="text-blue-400 underline"
+                to="/register"
+              >
                 {" "}
                 Register
               </Link>

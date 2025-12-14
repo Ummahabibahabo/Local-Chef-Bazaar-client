@@ -1,21 +1,19 @@
 import { FaMoneyBillWave, FaStar, FaTruck } from "react-icons/fa";
 import { GiChefToque } from "react-icons/gi";
-import { useNavigate } from "react-router";
+import { Link } from "react-router";
 
 const MealsCards = ({ meal }) => {
-  const navigate = useNavigate();
-  const isLoggedIn = !!localStorage.getItem("user"); // check login
-  const { foodName, chefName, chefId, price, deliveryArea, foodImage, rating } =
-    meal;
-
-  const handleSeeDetails = () => {
-    if (isLoggedIn) {
-      navigate(`/meals/${chefId}`); // dynamic route
-    } else {
-      navigate("/login");
-    }
-  };
-
+  const {
+    foodName,
+    chefName,
+    chefId,
+    price,
+    deliveryArea,
+    foodImage,
+    rating,
+    _id,
+  } = meal;
+  console.log(meal);
   const infoClass =
     "flex items-center justify-between py-2 border-b border-dashed border-gray-300";
 
@@ -57,12 +55,14 @@ const MealsCards = ({ meal }) => {
 
         {/* Bottom Section: Button + Rating */}
         <div className="mt-4 flex items-center justify-between">
-          <button
-            onClick={handleSeeDetails}
+          <Link
+            to={`/meals-details/${_id}`}
             className="bg-primary hover:bg-gray-400 text-black font-semibold py-2 px-4 rounded-full shadow transition"
           >
+            {" "}
             See Details
-          </button>
+          </Link>
+
           <div className="flex items-center gap-1 text-yellow-500 font-semibold">
             <FaStar /> {rating}
           </div>
