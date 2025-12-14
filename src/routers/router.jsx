@@ -9,6 +9,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import MealsPage from "../Pages/Meals/MealsPage";
 import PrivateRoute from "./PrivateRoute";
 import MealsDetailsPage from "../Pages/MealsDetailsPage/MealsDetailsPage";
+import OrderPage from "../Pages/OrderPage/OrderPage";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,14 @@ export const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:3000/meals/${params.id}`),
+      },
+      {
+        path: "/order-page",
+        element: (
+          <PrivateRoute>
+            <OrderPage></OrderPage>
+          </PrivateRoute>
+        ),
       },
     ],
   },
