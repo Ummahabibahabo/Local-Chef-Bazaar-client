@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router";
 import CustomNavLink from "./CustomNavLink";
 import { PiBowlSteamBold } from "react-icons/pi";
+import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+  const [open, setOpen] = useState(false);
   const links = (
     <>
       <CustomNavLink to="/">Home</CustomNavLink>
@@ -59,13 +62,41 @@ const Navbar = () => {
       </div>
 
       {/* RIGHT SIDE */}
-      <div className="navbar-end">
-        <Link
-          to="/login"
-          className="btn bg-primary text-black font-semibold px-6"
-        >
-          Login
-        </Link>
+      <div className="navbar-end relative">
+        {user ? (
+          <>
+            {/* User Image */}
+            <img
+              onClick={() => setOpen(!open)}
+              src={user.photoURL || "https://i.ibb.co/ZYW3VTp/brown-brim.png"}
+              alt="user"
+              className="w-10 h-10 rounded-full cursor-pointer border"
+            />
+
+            {/* Click Toggle Dropdown */}
+            {open && (
+              <div className="absolute top-14 right-0 bg-white shadow-lg rounded-xl w-40 p-4 z-50">
+                <p className="text-sm font-semibold mb-3 text-center">
+                  {user.displayName || "User"}
+                </p>
+
+                <button
+                  onClick={logOut}
+                  className="btn btn-sm w-full bg-red-500 text-white"
+                >
+                  Logout
+                </button>
+              </div>
+            )}
+          </>
+        ) : (
+          <Link
+            to="/login"
+            className="btn bg-primary text-black font-semibold px-6"
+          >
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );
