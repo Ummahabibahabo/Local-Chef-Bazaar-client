@@ -5,16 +5,16 @@ const ReviewCard = ({ review }) => {
   return (
     <div className="relative bg-white rounded-3xl border border-gray-200 shadow-lg hover:shadow-2xl transition-all p-6 max-w-md mx-auto mb-6">
       {/* Reviewer Image */}
-      <div className="absolute -top-10 left-1/2 transform -translate-x-1/2">
+      <div className="absolute -top-0 left-1/2 transform -translate-x-1/2 ">
         <img
           src={review.reviewerImage}
           alt={review.reviewerName}
-          className="w-20 h-20 rounded-full border-4 border-white shadow-md object-cover"
+          className="w-20 h-20 rounded-full border-4 border-white shadow-md object-cover mb-5"
         />
       </div>
 
       {/* Name & Rating */}
-      <div className="mt-12 text-center">
+      <div className="mt-15 text-center">
         <p className="font-bold text-gray-800 text-lg">{review.reviewerName}</p>
         <div className="flex justify-center items-center gap-1 text-yellow-500 mt-1">
           {Array.from({ length: review.rating }).map((_, idx) => (
