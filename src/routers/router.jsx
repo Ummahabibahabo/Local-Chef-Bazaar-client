@@ -10,6 +10,8 @@ import MealsPage from "../Pages/Meals/MealsPage";
 import PrivateRoute from "./PrivateRoute";
 import MealsDetailsPage from "../Pages/MealsDetailsPage/MealsDetailsPage";
 import OrderPage from "../Pages/OrderPage/OrderPage";
+import DashboardLayout from "../Layouts/DashboardLayout";
+import MyReview from "../Pages/Dashboard/UserDashboard/MyReview";
 
 export const router = createBrowserRouter([
   {
@@ -36,12 +38,14 @@ export const router = createBrowserRouter([
           fetch(`http://localhost:3000/meals/${params.id}`),
       },
       {
-        path: "/order-page",
+        path: "/order-page/:id",
         element: (
           <PrivateRoute>
-            <OrderPage></OrderPage>
+            <OrderPage />
           </PrivateRoute>
         ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/meals/${params.id}`),
       },
     ],
   },
@@ -56,6 +60,20 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         Component: Register,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "my-reviews",
+        Component: MyReview,
       },
     ],
   },

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 
-const AddReviewForm = ({ foodId, onReviewAdded }) => {
+const AddReviewForm = ({ foodId, foodName, onReviewAdded }) => {
   const { user } = useAuth();
   const {
     register,
@@ -22,6 +22,8 @@ const AddReviewForm = ({ foodId, onReviewAdded }) => {
 
     const reviewData = {
       foodId,
+      foodName,
+      userEmail: user.email,
       reviewerName: user.displayName,
       reviewerImage: user.photoURL,
       rating: Number(data.rating),
@@ -35,13 +37,16 @@ const AddReviewForm = ({ foodId, onReviewAdded }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(reviewData),
       });
-
       const result = await res.json();
 
       if (result.insertedId) {
         Swal.fire("Success", "Review submitted successfully!", "success");
-        // Pass the newly added review back to parent
-        onReviewAdded({ ...reviewData, _id: result.insertedId });
+        onReviewAdded({
+          ...reviewData,
+          _id: result.insertedId,
+          mealName: foodName,
+          date: new Date().toISOString(),
+        });
       }
     } catch (err) {
       console.error(err);
@@ -56,7 +61,7 @@ const AddReviewForm = ({ foodId, onReviewAdded }) => {
       onSubmit={handleSubmit(onSubmit)}
       className="mt-6 space-y-4 p-4 border rounded-lg shadow-md"
     >
-      <h3 className="text-xl font-semibold">Give Your Review</h3>
+      <h3 className="text-xl font-semibold">Give Your Review for {foodName}</h3>
 
       <div>
         <label className="block mb-1">Rating (1-5)</label>
