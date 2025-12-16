@@ -4,8 +4,6 @@ import { FaStar, FaRegCommentDots } from "react-icons/fa";
 const ReviewCard = ({ review }) => {
   return (
     <div className="relative bg-white rounded-3xl border border-gray-200 shadow-lg hover:shadow-2xl transition-all p-6 max-w-md mx-auto mb-6">
-      <h3 className="font-semibold">{review.foodName}</h3>
-
       {/* Reviewer Image */}
       <div className="absolute -top-0 left-1/2 transform -translate-x-1/2 ">
         <img

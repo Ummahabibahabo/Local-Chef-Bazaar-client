@@ -39,7 +39,7 @@ const DashboardLayout = () => {
           <div className="px-6 py-5 border-b">
             <Link
               to="/"
-              className="flex items-center gap-2 text-2xl font-bold text-primary"
+              className="flex items-center gap-2 text-2xl font-bold text-black"
             >
               <PiBowlSteamBold size={30} />
               LocalFoodBazar
@@ -51,10 +51,19 @@ const DashboardLayout = () => {
             <li>
               <Link
                 to="/dashboard/my-reviews"
-                className="flex items-center gap-2 rounded-lg hover:bg-primary hover:text-white"
+                className="flex items-center gap-2 rounded-lg hover:bg-primary hover:text-black"
               >
                 <MdRateReview size={18} />
                 My Reviews
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/dashboard/favorites-meals"
+                className="flex items-center gap-2 rounded-lg hover:bg-primary hover:text-black"
+              >
+                <MdRateReview size={18} />
+                Favorite Meals
               </Link>
             </li>
           </ul>

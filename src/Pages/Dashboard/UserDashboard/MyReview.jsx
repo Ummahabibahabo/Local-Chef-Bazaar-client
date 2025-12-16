@@ -53,7 +53,7 @@ const MyReview = () => {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-6">My Reviews</h2>
+      <h2 className="text-2xl font-bold mb-6 text-center">My Reviews</h2>
       {reviews.length === 0 && (
         <p className="text-gray-500">You have not added any reviews yet.</p>
       )}
@@ -74,7 +74,7 @@ const MyReview = () => {
             <div className="flex gap-3">
               <button
                 onClick={() => setSelectedReview(review)}
-                className="btn btn-sm btn-outline btn-primary"
+                className="btn btn-sm btn-outline btn-black"
               >
                 <FaEdit /> Update
               </button>
