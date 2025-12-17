@@ -3,6 +3,7 @@ import { PiBowlSteamBold } from "react-icons/pi";
 import { Link, Outlet } from "react-router";
 import { MdRateReview } from "react-icons/md";
 import { FiMenu } from "react-icons/fi";
+import CustomNavLink from "../Pages/Shared/Navbar/CustomNavLink";
 
 const DashboardLayout = () => {
   return (
@@ -49,22 +50,22 @@ const DashboardLayout = () => {
           {/* Menu */}
           <ul className="menu px-4 py-4 gap-2 font-medium">
             <li>
-              <Link
-                to="/dashboard/my-reviews"
-                className="flex items-center gap-2 rounded-lg hover:bg-primary hover:text-black"
-              >
-                <MdRateReview size={18} />
+              <CustomNavLink to="/dashboard/my-reviews">
                 My Reviews
-              </Link>
+              </CustomNavLink>
             </li>
             <li>
-              <Link
-                to="/dashboard/favorites-meals"
-                className="flex items-center gap-2 rounded-lg hover:bg-primary hover:text-black"
-              >
-                <MdRateReview size={18} />
+              <CustomNavLink to="/dashboard/favorites-meals">
                 Favorite Meals
-              </Link>
+              </CustomNavLink>
+            </li>
+            <li>
+              <CustomNavLink to="/dashboard/profile-Page">
+                Profile
+              </CustomNavLink>
+            </li>
+            <li>
+              <CustomNavLink to="/dashboard/my-orders">My Orders</CustomNavLink>
             </li>
           </ul>
         </aside>

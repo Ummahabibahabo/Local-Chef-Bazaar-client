@@ -13,6 +13,11 @@ import OrderPage from "../Pages/OrderPage/OrderPage";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import MyReview from "../Pages/Dashboard/UserDashboard/MyReview";
 import FavoriteMealsPage from "../Pages/Dashboard/UserDashboard/FavoriteMealsPage";
+import ProfilePage from "../Pages/Dashboard/UserDashboard/ProfilePage";
+import MyOrders from "../Pages/Dashboard/UserDashboard/MyOrders";
+import Payment from "../Pages/Dashboard/Payment/Payment";
+import PaymentSuccess from "../Pages/Dashboard/Payment/PaymentSuccess";
+import PaymentCancelled from "../Pages/Dashboard/Payment/PaymentCancelled";
 
 export const router = createBrowserRouter([
   {
@@ -79,6 +84,26 @@ export const router = createBrowserRouter([
       {
         path: "favorites-meals",
         Component: FavoriteMealsPage,
+      },
+      {
+        path: "profile-Page",
+        Component: ProfilePage,
+      },
+      {
+        path: "my-orders",
+        Component: MyOrders,
+      },
+      {
+        path: "payment/:foodId",
+        Component: Payment,
+      },
+      {
+        path: "payment-success",
+        Component: PaymentSuccess,
+      },
+      {
+        path: "payment-cancelled",
+        Component: PaymentCancelled,
       },
     ],
   },
