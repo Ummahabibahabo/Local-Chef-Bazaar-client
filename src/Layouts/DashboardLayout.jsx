@@ -67,6 +67,11 @@ const DashboardLayout = () => {
             <li>
               <CustomNavLink to="/dashboard/my-orders">My Orders</CustomNavLink>
             </li>
+            <li>
+              <CustomNavLink to="/dashboard/payment-history">
+                Payment History
+              </CustomNavLink>
+            </li>
           </ul>
         </aside>
       </div>
